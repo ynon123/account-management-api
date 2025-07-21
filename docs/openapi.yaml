@@ -1,0 +1,55 @@
+openapi: 3.0.0
+info:
+  title: Account Management API
+  version: 1.0.0
+  description: API for managing accounts and people
+
+paths:
+  # Accounts
+  /accounts:
+    $ref: './paths/accounts.yaml#/paths/~1accounts'
+  /accounts/{accountId}:
+    $ref: './paths/accounts.yaml#/paths/~1accounts~1{accountId}'
+  /accounts/{accountId}/balance:
+    $ref: './paths/accounts.yaml#/paths/~1accounts~1{accountId}~1balance'
+  /accounts/{accountId}/block:
+    $ref: './paths/accounts.yaml#/paths/~1accounts~1{accountId}~1block'
+
+  # people
+  /people:
+    $ref: './paths/people.yaml#/paths/~1people'
+  /people/{personId}:
+    $ref: './paths/people.yaml#/paths/~1people~1{personId}'
+
+  # Transactions
+  /transactions/{accountId}/deposit:
+    $ref: './paths/transactions.yaml#/paths/~1transactions~1{accountId}~1deposit'
+  /transactions/{accountId}/withdraw:
+    $ref: './paths/transactions.yaml#/paths/~1transactions~1{accountId}~1withdraw'
+  /transactions/{accountId}/transactions:
+    $ref: './paths/transactions.yaml#/paths/~1transactions~1{accountId}~1transactions'
+  /transactions/{accountId}/filter:
+    $ref: './paths/transactions.yaml#/paths/~1transactions~1{accountId}~1filter'
+components:
+  schemas:
+    # Accounts
+    AccountCreateInput:
+      $ref: './components/account-schemas.yaml#/components/schemas/AccountCreateInput'
+    Account:
+      $ref: './components/account-schemas.yaml#/components/schemas/Account'
+    DeleteAccountResponse:
+      $ref: './components/account-schemas.yaml#/components/schemas/DeleteAccountResponse'
+
+    # Persons
+    PersonCreateInput:
+      $ref: './components/person-schemas.yaml#/components/schemas/PersonCreateInput'
+    Person:
+      $ref: './components/person-schemas.yaml#/components/schemas/Person'
+    DeletePersonResponse:
+      $ref: './components/person-schemas.yaml#/components/schemas/DeletePersonResponse'
+
+    # Transactions
+    TransactionCreateInput:
+      $ref: './components/transaction-schemas.yaml#/components/schemas/TransactionCreateInput'
+    Transaction:
+        $ref: './components/transaction-schemas.yaml#/components/schemas/Transaction'

@@ -1,0 +1,43 @@
+components:
+  schemas:
+    PersonCreateInput:
+      type: object
+      required:
+        - name
+        - document
+        - birthDate
+      properties:
+        name:
+          type: string
+          example: 'John Doe'
+        document:
+          type: string
+          example: '12345678901'
+        birthDate:
+          type: string
+          format: date-time
+          example: '1990-01-01T00:00:00Z'
+
+    Person:
+      type: object
+      properties:
+        personId:
+          type: number
+          example: 123456
+        name:
+          type: string
+          example: 'John Doe'
+        document:
+          type: string
+          example: '12345678901'
+        birthDate:
+          type: string
+          format: date-time
+          example: '1990-01-01T00:00:00Z'
+
+    DeletePersonResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Person with ID 123456 deleted successfully

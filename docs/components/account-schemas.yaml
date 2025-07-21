@@ -1,0 +1,51 @@
+components:
+  schemas:
+    AccountCreateInput:
+      type: object
+      required:
+        - personId
+        - balance
+        - dailyWithdrawalLimit
+        - accountType
+      properties:
+        personId:
+          type: number
+          example: 12345
+        balance:
+          type: number
+          example: 1000.00
+        dailyWithdrawalLimit:
+          type: number
+          example: 500.00
+        accountType:
+          type: number
+          example: 1
+
+    Account:
+      type: object
+      properties:
+        accountId:
+          type: number
+          example: 654321
+        personId:
+          type: number
+          example: 12345
+        balance:
+          type: number
+          example: 1000.00
+        dailyWithdrawalLimit:
+          type: number
+          example: 500.00
+        accountType:
+          type: number
+          example: 1
+        activeFlag:
+          type: boolean
+          example: true
+
+    DeleteAccountResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Account with ID 123456 deleted successfully

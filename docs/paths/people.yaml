@@ -1,0 +1,48 @@
+paths:
+  /people:
+    post:
+      operationId: createPerson
+      summary: Create a new person
+      tags:
+        - People
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '../components/person-schemas.yaml#/components/schemas/PersonCreateInput'
+      responses:
+        '201':
+          description: Person created
+          content:
+            application/json:
+              schema:
+                $ref: '../components/person-schemas.yaml#/components/schemas/Person'
+        '400':
+          description: Bad request
+        '500':
+          description: Server error
+
+  /people/{personId}:
+    delete:
+      operationId: deletePerson
+      summary: Delete a person
+      tags:
+        - People
+      parameters:
+        - in: path
+          name: personId
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Person deleted successfully
+          content:
+            application/json:
+              schema:
+                $ref: '../components/person-schemas.yaml#/components/schemas/DeletePersonResponse'
+        '404':
+          description: Person not found
+        '500':
+          description: Internal server error

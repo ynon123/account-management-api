@@ -1,0 +1,120 @@
+paths:
+  /transactions/{accountId}/deposit:
+    post:
+      summary: Deposit into account
+      operationId: deposit
+      tags:
+        - Transactions
+      parameters:
+        - in: path
+          name: accountId
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '../components/transaction-schemas.yaml#/components/schemas/TransactionCreateInput'
+      responses:
+        '200':
+          description: Deposit successful
+          content:
+            application/json:
+              schema:
+                $ref: '../components/transaction-schemas.yaml#/components/schemas/Transaction'
+
+  /transactions/{accountId}/withdraw:
+    post:
+      summary: Withdraw from account
+      operationId: withdraw
+      tags:
+        - Transactions
+      parameters:
+        - in: path
+          name: accountId
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '../components/transaction-schemas.yaml#/components/schemas/TransactionCreateInput'
+      responses:
+        '200':
+          description: Withdrawal successful
+          content:
+            application/json:
+              schema:
+                $ref: '../components/transaction-schemas.yaml#/components/schemas/Transaction'
+
+  /transactions/{accountId}/transactions:
+    get:
+      operationId: getAccountTransactions
+      summary: Get list of account transactions
+      tags:
+        - Transactions
+      parameters:
+        - in: path
+          name: accountId
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: List of transactions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '../components/transaction-schemas.yaml#/components/schemas/Transaction'
+        '404':
+          description: Account not found
+        '500':
+          description: Internal server error
+  /transactions/{accountId}/filter:
+    get:
+      operationId: getAccountTransactionsByDateRange
+      summary: Get account transactions by date range
+      tags:
+        - Transactions
+      parameters:
+        - in: path
+          name: accountId
+          required: true
+          schema:
+            type: integer
+          description: ID of the account
+        - in: query
+          name: startDate
+          required: true
+          schema:
+            type: string
+            format: date
+          description: Start date for filtering (YYYY-MM-DD)
+        - in: query
+          name: endDate
+          required: true
+          schema:
+            type: string
+            format: date
+          description: End date for filtering (YYYY-MM-DD)
+      responses:
+        '200':
+          description: List of account transactions within the date range
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '../components/transaction-schemas.yaml#/components/schemas/Transaction'
+        '400':
+          description: Invalid date range
+        '404':
+          description: Account not found
+        '500':
+          description: Internal server error

@@ -1,0 +1,103 @@
+paths:
+  /accounts:
+    post:
+      operationId: createAccount
+      summary: Create a new account
+      tags:
+        - Accounts
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '../components/account-schemas.yaml#/components/schemas/AccountCreateInput'
+      responses:
+        '201':
+          description: Account created
+          content:
+            application/json:
+              schema:
+                $ref: '../components/account-schemas.yaml#/components/schemas/Account'
+        '400':
+          description: Bad request
+        '500':
+          description: Server error
+
+  /accounts/{accountId}:
+    delete:
+      operationId: deleteAccount
+      summary: Delete an account
+      tags:
+        - Accounts
+      parameters:
+        - in: path
+          name: accountId
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Account deleted successfully
+          content:
+            application/json:
+              schema:
+                $ref: '../components/account-schemas.yaml#/components/schemas/DeleteAccountResponse'
+        '404':
+          description: Account not found
+        '500':
+          description: Internal server error
+
+  /accounts/{accountId}/balance:
+    get:
+      operationId: getAccountBalance
+      summary: Get account balance
+      tags:
+        - Accounts
+      parameters:
+        - in: path
+          name: accountId
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Account balance returned
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  balance:
+                    type: number
+                    example: 1000.00
+        '404':
+          description: Account not found
+        '500':
+          description: Internal server error
+  /accounts/{accountId}/block:
+    patch:
+      operationId: blockAccount
+      summary: Block an account
+      tags:
+        - Accounts
+      parameters:
+        - in: path
+          name: accountId
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Account blocked
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Account with ID 123456 has been blocked
+        '404':
+          description: Account not found
+        '500':
+          description: Internal server error

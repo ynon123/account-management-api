@@ -1,0 +1,43 @@
+components:
+  schemas:
+    Transaction:
+      type: object
+      required:
+        - transactionId
+        - accountId
+        - value
+      properties:
+        transactionId:
+          type: number
+          example: 1001
+        accountId:
+          type: number
+          example: 654321
+        value:
+          type: number
+          example: -200.00
+        transactionDate:
+          type: string
+          format: date-time
+          example: '2025-07-18T14:00:00Z'
+
+    TransactionCreateInput:
+      type: object
+      required:
+        - transactionId
+        - accountId
+        - value
+      properties:
+        transactionId:
+          type: number
+          example: 1001
+        accountId:
+          type: number
+          example: 654321
+        value:
+          type: number
+          example: -200.00
+        transactionDate:
+          type: string
+          format: date-time
+          example: '2025-07-18T14:00:00Z'
