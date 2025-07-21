@@ -41,12 +41,20 @@ Once running, access Swagger UI at:
 http://localhost:3000/api-docs
 ```
 
-## Available Endpoints
 
-- `POST /accounts` - Create new account
-- `PATCH /accounts/:accountId/block` - Block account
-- `GET /accounts/:accountId/balance` - Check balance
-- `POST /transactions/:accountId/deposit` - Deposit
-- `POST /transactions/:accountId/withdraw` - Withdraw
-- `GET /transactions/:accountId/transactions` - All transactions
-- `GET /transactions/:accountId/transactions/period?from=YYYY-MM-DD&to=YYYY-MM-DD` - Transactions by period
+## Available Endpoints
+Accounts
+- POST /accounts – Create new account
+- DELETE /accounts/:accountId – Delete account
+- PATCH /accounts/:accountId/block – Block (freeze) account
+- GET /accounts/:accountId/balance – Check account balance
+
+Persons
+- POST /persons – Create new person
+- DELETE /persons/:personId – Delete person
+
+Transactions
+- POST /transactions/:accountId/deposit – Deposit funds
+- POST /transactions/:accountId/withdraw – Withdraw funds
+- GET /transactions/:accountId/transactions – Get all transactions
+- GET /transactions/:accountId/transactions/period?from=YYYY-MM-DDTHH:mm:ssZ&to=YYYY-MM-DDTHH:mm:ssZ – Get transactions by date/time range
