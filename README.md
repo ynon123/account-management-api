@@ -111,7 +111,7 @@ MONGO_URI=mongodb://mongo:27017/account-db?replicaSet=rs0
 
 ---
 
-## 📄 License
+## License
 
 MIT License
 
