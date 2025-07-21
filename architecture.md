@@ -12,7 +12,6 @@ src/
 ├── models/           # Mongoose schemas (Account, Person, Transaction)
 ├── routes/           # Express routers for endpoints
 ├── services/         # Business logic layer
-├── types/            # Custom TypeScript type declarations
 ├── app.ts            # Express app configuration
 ├── index.ts          # App entrypoint
 docs/
