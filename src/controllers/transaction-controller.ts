@@ -37,8 +37,6 @@ export const getTransactions = async (req: Request, res: Response) => {
 
 export const getAccountStatementByPeriod = async (req: Request, res: Response) => {
     try {
-        console.log('from:', req.query.from);
-        console.log('to:', req.query.to);
         const accountId = parseInt(req.params.accountId);
         const { from, to } = req.query;
 
@@ -52,8 +50,6 @@ export const getAccountStatementByPeriod = async (req: Request, res: Response) =
 
         const start = new Date(from as string);
         const end = new Date(to as string);
-        console.log(start);
-        console.log(end);
 
         const transactions = await getTransactionsByPeriod(accountId, start, end);
 

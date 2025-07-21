@@ -4,7 +4,6 @@ import {createNewAccount, deleteAccountById, getAccountBalance, blockAccountById
 export const createAccount = async (req: Request, res: Response) => {
     try {
         const accountData = req.body;
-        console.log(req.body)
 
         const newAccount = await createNewAccount(accountData);
 
